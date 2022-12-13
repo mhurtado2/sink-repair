@@ -1,0 +1,43 @@
+
+img {
+    border-radius: 50%;
+}
+
+.couple {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.button {
+    margin: 50px, 50px, 50px, 50px;
+    background-color: rgb(68, 59, 130);
+    color: White;
+    line-height: 35px;
+    width: 150px;
+}
+
+.request_li {
+    background-color: white;
+    border: 1px solid rgb(83, 86, 89);
+}
+
+.request__delete {
+    margin: 50px, 50px, 50px, 50px;
+    background-color: rgb(142, 50, 192);
+    color: White;
+    line-height: 25px;
+    width: 100px;  
+}
+
+.request {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

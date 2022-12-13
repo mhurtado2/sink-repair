@@ -1,7 +1,7 @@
 
 import { fetchRequests } from "./dataAccess.js"
 import { SinkRepair } from "./SinkRepair.js"
-
+import { fetchPlumbers } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
 
@@ -15,16 +15,22 @@ const render = () => {
 
 render()
 
-
-
-
-
-/*
-const mainContainer = document.querySelector("#container")
-
-const render = () => {
-    mainContainer.innerHTML = SinkRepair()
+const renderTwo = () => {
+    fetchPlumbers()
+        .then(() => fetchPlumbers())
+        .then(
+            () => {
+                mainContainer.innerHTML = SinkRepair()
+            }
+        )
 }
 
-render()
-*/
+renderTwo()
+
+mainContainer.addEventListener(
+    "stateChanged",
+    customEvent => {
+        render()
+    }
+)
+
