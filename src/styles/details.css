@@ -5,9 +5,10 @@ img {
 
 .couple {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 .field {
     display: flex;
     flex-direction: column;
@@ -23,6 +24,15 @@ img {
     width: 150px;
 }
 
+.plumbers {
+    margin: 50px, 50px, 50px, 50px;
+    background-color: rgb(18, 104, 79);
+    color: White;
+    line-height: 25px;
+    width: 150px;
+}
+
+
 .request_li {
     background-color: white;
     border: 1px solid rgb(83, 86, 89);
@@ -33,11 +43,31 @@ img {
     background-color: rgb(142, 50, 192);
     color: White;
     line-height: 25px;
-    width: 100px;  
+    width: 150px;  
 }
 
 .request {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    width: 900px;
+}
+
+.Table {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(98, 112, 107);
+    color: White;
+    width: 900px;
+}
+
+.space {
+    display: flex;
+    flex-direction: row;
     justify-content: flex-end;
+}
+
+.done {
+    color: red;
 }

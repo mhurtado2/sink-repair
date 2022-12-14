@@ -1,5 +1,5 @@
 
-import { getRequests, deleteRequest, getPlumbers } from "./dataAccess.js"
+import { getRequests, deleteRequest, getPlumbers, saveCompletion, getCompletions } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
 
@@ -15,45 +15,82 @@ mainContainer.addEventListener(
     (event) => {
         if (event.target.id === "plumbers") {
             const [requestId, plumberId] = event.target.value.split("--")
+            const timestamp = Date.now()
 
-            let matchingRequest = null
-            for (const request of requests) {
-                if (parseInt(requestId) === request.id) {
-                    matchingRequest = request
-                }
+            const completion = {
+                requestid: parseint(requestId),
+                plumberid: parseint(plumberId),
+                date_created: timestamp
             }
-            let matchingPlumber = null
-            for (const plumber of plumbers) {
-                if (matchingRequest.plumberId === plumber.id) {
-                    matchingPlumber = plumber
-                }
-            }
-            /*
-                This object should have 3 properties
-                   1. requestId
-                   2. plumberId
-                   3. date_created
-            */
-            const completion = {}
 
-            /*
-                Invoke the function that performs the POST request
-                to the `completions` resource for your API. Send the
-                completion object as a parameter.
-             */
-
+            saveCompletion(completion)
         }
     }
 )
 
-const requests = getRequests()
-const plumbers = getPlumbers()
 
 
 const convertRequestToListElement = (request) => {
     const plumbers = getPlumbers()
-    let html = ""
+    const completions = getCompletions()
 
+    let htmlString = ""
+    completions.map(completion => {
+        if (parseInt(completion.requestId) === request.id) {
+            htmlString = `
+                        <li class="done">
+                            ${request.description}
+                            <button class="request__delete" id="request--${request.id}">
+                            Delete
+                            </button>
+                        </li>
+                        `
+        }
+        else {
+            htmlString = `<div class="request"><li class="request_li">
+            ${request.description}<div class="space">
+            <select class="plumbers" id="plumbers">
+            <option value="">Choose</option>
+            ${plumbers.map(
+                plumber => {
+                    return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+                }
+            ).join("")
+                }
+                </select>
+                <button class="request__delete" id="request--${request.id}">
+                    Delete
+                </button>
+        </div></li></div>
+        `
+        }
+    })
+    return htmlString
+}
+
+
+export const Requests = () => {
+    const requests = getRequests()
+
+    let html = `
+        <ul>
+        <div class="Table">
+        <h1>Description</h2>
+        <h2>Completed By</h2>
+        </div>
+            ${requests.map(convertRequestToListElement).join("")
+        }
+        </ul>
+    `
+
+    return html
+}
+
+
+/*
+const convertRequestToListElement = (request) => {
+    const plumbers = getPlumbers()
+    let html = ""
     html += `<div class="request"><li class="request_li">${request.description}
     <select class="plumbers" id="plumbers">
     <option value="">Choose</option>
@@ -68,34 +105,4 @@ const convertRequestToListElement = (request) => {
         Delete </button> </li><div>`
     return html
 }
-
-
-export const Requests = () => {
-    const requests = getRequests()
-    // const plumbers = getPlumbers()
-
-    let html = `
-        <ul>
-            ${requests.map(convertRequestToListElement).join("")
-        } 
-        </ul>
-    `
-
-    return html
-}
-
-/*
-export const Requests = () => {
-    const requests = getRequests()
-
-    let html = `
-        <ul>
-            ${requests.map(convertRequestToListElement).join("")
-        }
-        </ul>
-    `
-
-    return html
-}
 */
-
