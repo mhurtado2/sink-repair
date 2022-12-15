@@ -18,31 +18,6 @@ const render = () => {
 
 render()
 
-/*
-const renderTwo = () => {
-    fetchPlumbers()
-        .then(() => fetchPlumbers())
-        .then(
-            () => {
-                mainContainer.innerHTML = SinkRepair()
-            }
-        )
-}
-
-renderTwo()
-
-const renderThree = () => {
-    fetchCompletions()
-        .then(() => fetchCompletions())
-        .then(
-            () => {
-                mainContainer.innerHTML = SinkRepair()
-            }
-        )
-}
-
-renderThree()
-*/
 
 mainContainer.addEventListener(
     "stateChanged",

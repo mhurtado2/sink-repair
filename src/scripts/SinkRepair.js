@@ -16,6 +16,5 @@ export const SinkRepair = () => {
     `
 }
 
-//if you want a space between pic and word, I think you will have to
-//put both of them in a div as separate elements and then add margin 
+
 

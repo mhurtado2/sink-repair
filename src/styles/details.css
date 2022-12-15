@@ -36,6 +36,7 @@ img {
 .request_li {
     background-color: white;
     border: 1px solid rgb(83, 86, 89);
+    width: 900px;
 }
 
 .request__delete {
@@ -66,8 +67,15 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    width: 900px;
 }
 
 .done {
-    color: red;
+    background-color: rgb(232, 87, 87);
+    width: 900px;
+}
+
+.color {
+    color: white;
+    width: 900px;
 }

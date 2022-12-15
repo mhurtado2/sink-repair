@@ -10,24 +10,7 @@
     }
   ],
   "completions": [
-    {
-      "requestid": "1",
-      "plumberid": "1",
-      "date_created": 1671041143311,
-      "id": 1
-    },
-    {
-      "requestid": "2",
-      "plumberid": "2",
-      "date_created": 1671041147432,
-      "id": 2
-    },
-    {
-      "requestid": "3",
-      "plumberid": "2",
-      "date_created": 1671041150338,
-      "id": 3
-    }
+   
   ],
   "requests": [
     {
